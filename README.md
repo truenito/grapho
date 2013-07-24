@@ -2,7 +2,7 @@ Grapho
 ======
 Grapho is a extendable nano framework based on Turbine that allows the user to create directed graphs to do awesome stuff like represent circuits, family trees and pretty much everything that can be modeled using a graph. 
 
-It has reached a state of simplicity and is open for you to tinker with it. In it's current implementation Grapho models a circuit where the edges have a direction and the documentation is in form of ruby commenta (Spanish).
+It has reached a state of simplicity and is open for you to tinker with it. In it's current implementation Grapho models a circuit where the edges have a direction. The documentation is in form of ruby comments (Spanish for the moment YUCK!).
 
 --------------
 
