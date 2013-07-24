@@ -20,7 +20,7 @@ Adding components:
 ```a.add(Node.new(:component_2))```
 
 Connecting components:
-``` a.node(:componente_1).connect_to(a.node(:componente_2),"Serie")```
+```a.node(:componente_1).connect_to(a.node(:componente_2),"Serie")```
 
 Deleting Components:
 ```a.delete(a.node(:component_1))```
