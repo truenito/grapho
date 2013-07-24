@@ -1,18 +1,14 @@
-# encoding: UTF-8
-# Main de prueba
-#
-# @nota Se puede ejecutar desde la linea de comando utilizando "ruby test.rb" una vez Ruby está instalado.
-# @reference Windows: http://rubyinstaller.org/ .
+# Console test.
 # 
-# @brief:
-# Incluye las clases, crea un grafo, le añade cuatro componentes
-# luego las conecta de esta manera:
+# Run this from your console for a simple test,
+# Includes classes, creates a graph, adds four nodes, connects them, deletes one node and prints the circuit.
+# This is a graphical representation of the created graph.
 #
-#        ----X-----
+#        ----2-----
 #       |         |
-#  ---X--         X----
+#  ---1--         4----
 #       |         |
-#       -----X-----
+#       -----3-----
 #
 # Luego pasa a eliminar el cuarto componenete e imprime, para finalizar
 # Imprimiendo las conecciones (aristas) contenidas en cada uno de los nodos.
@@ -21,70 +17,68 @@ load 'edge.rb'
 load 'graph.rb'
 load 'node.rb'
 
-puts "Creando grafo:"
-puts "------- ------"
+puts "Creating graph:"
+puts "-------- ------"
 a = Graph.new
 puts a.inspect
 puts ""
 puts ""
-puts "Añadiendo componentes:"
-puts "--------- ------------"
+puts "Adding components:"
+puts "------ ------------"
 puts a.inspect
-a.add(Node.new(:componente_1))
-puts a.node(:componente_1).inspect
-a.add(Node.new(:componente_2))
-puts a.node(:componente_2).inspect
-a.add(Node.new(:componente_3))
-puts a.node(:componente_3).inspect
-a.add(Node.new(:componente_4))
-puts a.node(:componente_4).inspect
+a.add(Node.new(:component_1))
+puts a.node(:component_1).inspect
+a.add(Node.new(:component_2))
+puts a.node(:component_2).inspect
+a.add(Node.new(:component_3))
+puts a.node(:component_3).inspect
+a.add(Node.new(:component_4))
+puts a.node(:component_4).inspect
 puts ""
-puts "Grafo:"
-puts a.inspect
-puts ""
-puts "Conectando componentes por detrás:"
-puts "--------- ------------ --- -------"
-
-a.node(:componente_1).connect_to(a.node(:componente_2),"Serie")
-a.node(:componente_1).connect_to(a.node(:componente_3),"Serie")
-a.node(:componente_2).connect_to(a.node(:componente_3),"Paralelo")
-a.node(:componente_3).connect_to(a.node(:componente_2),"Paralelo")
-a.node(:componente_3).connect_to(a.node(:componente_4),"Serie")
-a.node(:componente_2).connect_to(a.node(:componente_4),"Serie")
-
-puts "Aristas creadas!"
-puts ""
-puts "Grafo con aristas:"
+puts "Graph:"
 puts a.inspect
 puts ""
-puts ""
-puts "Imprimiendo relaciones:"
-puts "---------- ------------"
+puts "Connecting components:"
+puts "---------- -----------"
 
-puts "Aristas de 'componente_1':"
-puts a.node(:componente_1).instance_variable_get(:@out_edges).inspect
-puts "Aristas de 'componente_2':"
-puts a.node(:componente_2).instance_variable_get(:@out_edges).inspect
-puts "Aristas de 'componente_3':"
-puts a.node(:componente_3).instance_variable_get(:@out_edges).inspect
-puts "Aristas de 'componente_4':"
-puts a.node(:componente_4).instance_variable_get(:@in_edges).inspect
-puts ""
-puts ""
+a.node(:component_1).connect_to(a.node(:component_2),"Serie")
+a.node(:component_1).connect_to(a.node(:component_3),"Serie")
+a.node(:component_2).connect_to(a.node(:component_3),"Paralelo")
+a.node(:component_3).connect_to(a.node(:component_4),"Serie")
+a.node(:component_2).connect_to(a.node(:component_4),"Serie")
 
-puts "Eliminando componente #4:"
-puts "---------- ---------- ---"
-
-a.delete(a.node(:componente_4))
-
-puts "Eliminado!"
+puts "Edges created!"
 puts ""
-puts ""
-puts "Circuito serializado:"
-puts "-------- ------------"
-a.serialize
-puts ""
-puts ""
-puts "Grafo final:"
+puts "Graph with the edges:"
 puts a.inspect
+puts ""
+puts ""
+puts "Printing relations (edges):"
+puts "-------- --------- --------"
 
+puts "Aristas de 'component_1':"
+puts a.node(:component_1).instance_variable_get(:@out_edges).inspect
+puts "Aristas de 'component_2':"
+puts a.node(:component_2).instance_variable_get(:@out_edges).inspect
+puts "Aristas de 'component_3':"
+puts a.node(:component_3).instance_variable_get(:@out_edges).inspect
+puts "Aristas de 'component_4':"
+puts a.node(:component_4).instance_variable_get(:@in_edges).inspect
+puts ""
+puts ""
+
+puts "Deleting component #4:"
+puts "-------- --------- ---"
+
+a.delete(a.node(:component_4))
+
+puts "Removing!"
+puts ""
+puts ""
+puts "Console Serialization:"
+puts "------- --------------"
+a.console_serialization
+puts ""
+puts ""
+puts "Graph:"
+puts a.inspect
