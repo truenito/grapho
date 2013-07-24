@@ -24,7 +24,7 @@ a.add(Node.new(:component_2))
 
 Connecting components:
 ```ruby
-a.node(:componente_1).connect_to(a.node(:componente_2),"Serie")
+a.node(:component_1).connect_to(a.node(:component_2),"Serie")
 ```
 
 Deleting Components:
