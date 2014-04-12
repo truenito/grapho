@@ -40,9 +40,10 @@ class Node
     select_edges(direction == :in ? @in_edges : @out_edges, label)
   end
 
-  def nodes(direction, label = nil)
-    edges(direction, label).map(&(direction == :in ? :from : :to))
-  end
+  # Reworking nodes method.
+  # def nodes(direction, label = nil)
+  #   edges(direction, label).map(&(direction == :in ? :from : :to))
+  # end
 
   private
   def connect_endpoint(collection, edge)
