@@ -33,6 +33,28 @@ Deleting Components:
 a.delete(a.node(:component_1))
 ```
 
+Console Serialization:
+```ruby
+a.console_serialization
+```
+
+Inspecting (Works for all classes, returns totals overviews):
+```ruby
+a.inspect
+```
+
+Printing components (For this example: ":component_1" will be printed):
+
+```ruby
+# printing out_edges of ":component_1"
+puts a.node(:component_1).instance_variable_get(:@out_edges).inspect
+
+# printing in_edges of ":component_1"
+puts a.node(:component_1).instance_variable_get(:@in_edges).inspect
+```
+
+
+
 To see it working just download the thing and run the test.rb from the command line ("ruby test.rb").
   [Gabriel González Mañaná]: http://estilopanda.com
   [@gabrieldgm]: http://twitter.com/gabrieldgm  
